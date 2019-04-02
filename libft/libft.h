@@ -6,7 +6,7 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 15:16:22 by apion             #+#    #+#             */
-/*   Updated: 2019/01/08 13:58:06 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/02 14:32:27 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int				ft_toupper(int c);
 int				ft_tolower(int c);
 
 void			ft_swap(void *a, void *b, int flag);
+int				ft_is_valid_atoi_input(const char *s);
 int				ft_atoi(const char *s);
 char			*ft_itoa(int n);
 
