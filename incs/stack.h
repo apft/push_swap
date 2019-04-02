@@ -6,7 +6,7 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 09:44:57 by apion             #+#    #+#             */
-/*   Updated: 2019/04/02 12:02:57 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/02 12:51:44 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,7 @@ int			stack_del_first(t_stack **head);
 int			stack_del_all(t_stack **head);
 
 int			stack_swap(t_stack *head);
+int			stack_rotate(t_stack **head);
+int			stack_reverse_rotate(t_stack **head);
 
 #endif
