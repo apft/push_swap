@@ -6,3 +6,9 @@
 # bin
 *.out
 *.bin
+
+# libs
+*.a
+
+# .obj dirs
+.obj/
