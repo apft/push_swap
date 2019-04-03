@@ -6,7 +6,7 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 15:16:22 by apion             #+#    #+#             */
-/*   Updated: 2019/04/02 14:32:27 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/03 11:41:55 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,14 @@ int				ft_isprint(int c);
 int				ft_isspace(int c);
 int				ft_islowc(int c);
 int				ft_isuppc(int c);
+int				ft_issign(int c);
+
+int				ft_istype_str(const char *str, int (*istype)(int));
 
 int				ft_toupper(int c);
 int				ft_tolower(int c);
 
 void			ft_swap(void *a, void *b, int flag);
-int				ft_is_valid_atoi_input(const char *s);
 int				ft_atoi(const char *s);
 char			*ft_itoa(int n);
 

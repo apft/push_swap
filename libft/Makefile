@@ -6,7 +6,7 @@
 #    By: apion <apion@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/29 11:28:44 by apion             #+#    #+#              #
-#    Updated: 2019/04/02 14:13:15 by apion            ###   ########.fr        #
+#    Updated: 2019/04/03 11:47:43 by apion            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,10 +25,11 @@ H_DIR		:= .
 O_DIR		:= .obj
 D_DIR		:= $(O_DIR)
 C_FILES		:= \
-	srcs/ft_atoi.c \
 	srcs/ft_isdigit.c \
-	srcs/ft_isspace.c \
+	srcs/ft_issign.c \
+	srcs/ft_istype_str.c \
 	srcs/ft_strcmp.c \
+	srcs/ft_strequ.c \
 	srcs/ft_strlen.c
 O_FILES		:= $(C_FILES:%.c=%.o)
 D_FILES		:= $(C_FILES:%.c=%.d)
