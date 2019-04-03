@@ -6,7 +6,7 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 16:08:28 by apion             #+#    #+#             */
-/*   Updated: 2019/04/01 17:22:41 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/03 16:23:05 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ static ssize_t	extract_line(char **line, t_gnl *gnl, int is_eof)
 	return (ret);
 }
 
-ssize_t			get_next_line(const int fd, char **line, int *eol_has_newline)
+ssize_t			get_next_line(const int fd, char **line, int *eol_had_newline)
 {
 	static t_gnl	gnl;
 
@@ -109,16 +109,16 @@ ssize_t			get_next_line(const int fd, char **line, int *eol_has_newline)
 					gnl.buff + gnl.index_start,
 					gnl.buff_read - gnl.index_start + 1))
 			>= gnl.index_start)
-		return (extract_line(line, &gnl, !(*eol_has_newline = 1)));
+		return (extract_line(line, &gnl, !(*eol_had_newline = 1)));
 	while (!gnl.eof && (gnl.buff_read = read(fd, gnl.buff, BUFF_SIZE)) > 0)
 	{
 		gnl.index_start = 0;
 		if ((gnl.index_eol = memsearch(gnl.buff, gnl.buff_read)) >= 0)
-			return (extract_line(line, &gnl, !(*eol_has_newline = 1)));
+			return (extract_line(line, &gnl, !(*eol_had_newline = 1)));
 		else if (extract_temp(&gnl) < 0)
 			return (GNL_ERROR);
 	}
 	if (gnl.temp_size > 0)
-		return (extract_line(line, &gnl, !(*eol_has_newline = 0)));
+		return (extract_line(line, &gnl, !(*eol_had_newline = 0)));
 	return (gnl.buff_read == 0 ? GNL_EOF : GNL_ERROR);
 }

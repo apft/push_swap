@@ -6,7 +6,7 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 16:10:22 by apion             #+#    #+#             */
-/*   Updated: 2019/04/01 17:28:54 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/03 16:22:34 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ typedef struct	s_gnl
 	int			eof;
 }				t_gnl;
 
-ssize_t			get_next_line(const int fd, char **line, int *eol_has_newline);
+ssize_t			get_next_line(const int fd, char **line, int *eol_had_newline);
 
 #endif
