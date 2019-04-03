@@ -6,7 +6,7 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 16:08:28 by apion             #+#    #+#             */
-/*   Updated: 2019/04/03 16:23:05 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/03 17:40:59 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,24 +71,23 @@ static ssize_t	extract_temp(t_gnl *gnl)
 	return (0);
 }
 
-static ssize_t	extract_line(char **line, t_gnl *gnl, int is_eof)
+static ssize_t	extract_line(char **line, t_gnl *gnl, int had_newline)
 {
 	size_t		size_in_buff;
 	ssize_t		ret;
 
-	size_in_buff = is_eof ? 0 : gnl->index_eol - gnl->index_start;
-	if (is_eof)
-		*line = memjoin(gnl->temp, gnl->temp_size, 0, size_in_buff);
-	else
+	size_in_buff = had_newline ? gnl->index_eol - gnl->index_start : 0;
+	if (had_newline)
 		*line = memjoin(gnl->temp, gnl->temp_size,
 				gnl->buff + gnl->index_start, size_in_buff);
+	else
+		*line = memjoin(gnl->temp, gnl->temp_size, 0, size_in_buff);
 	ret = gnl->temp_size + size_in_buff;
-	gnl->index_start = is_eof ? 0 : gnl->index_eol + 1;
+	gnl->index_start = had_newline ? gnl->index_eol + 1 : 0;
 	free(gnl->temp);
 	gnl->temp_size = 0;
 	gnl->temp = 0;
-	gnl->eof = is_eof
-		|| (gnl->buff_read < BUFF_SIZE && gnl->buff_read - 1 == gnl->index_eol);
+	*(gnl->buff + gnl->index_eol) = 0;
 	if (!*line)
 		return (GNL_ERROR);
 	if (gnl->index_start < gnl->buff_read
@@ -103,22 +102,22 @@ ssize_t			get_next_line(const int fd, char **line, int *eol_had_newline)
 {
 	static t_gnl	gnl;
 
-	if (fd < 0 || !line || read(fd, 0, 0) < 0)
+	if (fd < 0 || !line)
 		return (GNL_ERROR);
-	while (!gnl.eof && (gnl.index_eol = gnl.index_start + memsearch(
+	if ((gnl.index_eol = gnl.index_start + memsearch(
 					gnl.buff + gnl.index_start,
 					gnl.buff_read - gnl.index_start + 1))
 			>= gnl.index_start)
-		return (extract_line(line, &gnl, !(*eol_had_newline = 1)));
-	while (!gnl.eof && (gnl.buff_read = read(fd, gnl.buff, BUFF_SIZE)) > 0)
+		return (extract_line(line, &gnl, (*eol_had_newline = 1)));
+	while ((gnl.buff_read = read(fd, gnl.buff, BUFF_SIZE)) > 0)
 	{
 		gnl.index_start = 0;
 		if ((gnl.index_eol = memsearch(gnl.buff, gnl.buff_read)) >= 0)
-			return (extract_line(line, &gnl, !(*eol_had_newline = 1)));
+			return (extract_line(line, &gnl, (*eol_had_newline = 1)));
 		else if (extract_temp(&gnl) < 0)
 			return (GNL_ERROR);
 	}
-	if (gnl.temp_size > 0)
-		return (extract_line(line, &gnl, !(*eol_had_newline = 0)));
+	if (!gnl.buff_read && gnl.temp_size > 0)
+		return (extract_line(line, &gnl, (*eol_had_newline = 0)));
 	return (gnl.buff_read == 0 ? GNL_EOF : GNL_ERROR);
 }
