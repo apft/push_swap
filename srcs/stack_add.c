@@ -1,36 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_del.c                                        :+:      :+:    :+:   */
+/*   stack_add.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/02 09:45:01 by apion             #+#    #+#             */
-/*   Updated: 2019/04/03 11:50:48 by apion            ###   ########.fr       */
+/*   Created: 2019/04/02 09:45:03 by apion             #+#    #+#             */
+/*   Updated: 2019/04/03 14:37:20 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "stack.h"
 
-int			stack_del_first(t_stack **head)
+static t_stack	*create_node(int value)
 {
-	t_stack	*temp;
+	t_stack	*node;
 
-	if (!head || !*head)
-		return (EMPTY_STACK);
-	temp = *head;
-	*head = temp->next;
-	free(temp);
-	return (*head ? SUCCESS_STACK : EMPTY_STACK);
+	node = (t_stack *)malloc(sizeof(t_stack));
+	if (!node)
+		return (0);
+	node->value = value;
+	node->next = 0;
+	return (node);
 }
 
-int			stack_del_all(t_stack **head)
+int				stack_add_first(t_stack **head, int new_value)
 {
-	if (!head || !*head)
-		return (EMPTY_STACK);
-	while (stack_del_first(head) != EMPTY_STACK)
-		;
-	*head = 0;
-	return (EMPTY_STACK);
+	t_stack *new_node;
+
+	if (!head)
+		return (ERROR_STACK);
+	new_node = create_node(new_value);
+	if (!new_node)
+		return (ERROR_STACK);
+	if (*head)
+		new_node->next = *head;
+	*head = new_node;
+	return (SUCCESS_STACK);
 }

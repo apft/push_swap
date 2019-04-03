@@ -5,37 +5,22 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/02 09:45:03 by apion             #+#    #+#             */
-/*   Updated: 2019/04/02 12:18:04 by apion            ###   ########.fr       */
+/*   Created: 2019/04/03 14:37:48 by apion             #+#    #+#             */
+/*   Updated: 2019/04/03 15:22:23 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "stack.h"
 
-static t_stack	*create_node(int value)
+int		stack_push(t_stack **stack_from, t_stack **stack_to)
 {
 	t_stack	*node;
 
-	node = (t_stack *)malloc(sizeof(t_stack));
-	if (!node)
+	if (!stack_from || !stack_to || !*stack_from)
 		return (0);
-	node->value = value;
-	node->next = 0;
-	return (node);
-}
-
-int				stack_push(t_stack **head, int new_value)
-{
-	t_stack *new_node;
-
-	if (!head)
-		return (ERROR_STACK);
-	new_node = create_node(new_value);
-	if (!new_node)
-		return (ERROR_STACK);
-	if (*head)
-		new_node->next = *head;
-	*head = new_node;
-	return (SUCCESS_STACK);
+	node = *stack_from;
+	*stack_from = node->next;
+	node->next = *stack_to;
+	*stack_to = node;
+	return (1);
 }
