@@ -6,7 +6,7 @@
 #    By: apion <apion@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/29 11:28:44 by apion             #+#    #+#              #
-#    Updated: 2019/04/02 14:15:10 by apion            ###   ########.fr        #
+#    Updated: 2019/04/03 14:44:13 by apion            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,9 @@ C_DIR		:= srcs
 H_DIR		:= incs $(LIBFT_PATH) $(FT_PRINTF_PATH)
 O_DIR		:= .obj
 C_FILES		:= \
+	srcs/parse_args.c \
 	srcs/get_next_line.c \
+	srcs/stack_add.c \
 	srcs/stack_del.c \
 	srcs/stack_print.c \
 	srcs/stack_push.c \
