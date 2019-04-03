@@ -12,3 +12,7 @@
 
 # .obj dirs
 .obj/
+
+# exec
+checker
+push_swap
