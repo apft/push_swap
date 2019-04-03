@@ -40,6 +40,10 @@ C_DIR		:= srcs
 H_DIR		:= incs $(LIBFT_PATH) $(FT_PRINTF_PATH)
 O_DIR		:= .obj
 C_FILES		:= \
+	srcs/core/push.c \
+	srcs/core/reverse_rotate.c \
+	srcs/core/rotate.c \
+	srcs/core/swap.c \
 	srcs/parse_args.c \
 	srcs/get_next_line.c \
 	srcs/output.c \
