@@ -42,6 +42,7 @@ O_DIR		:= .obj
 C_FILES		:= \
 	srcs/parse_args.c \
 	srcs/get_next_line.c \
+	srcs/output.c \
 	srcs/stack_add.c \
 	srcs/stack_del.c \
 	srcs/stack_print.c \
