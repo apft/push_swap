@@ -6,7 +6,7 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 09:45:03 by apion             #+#    #+#             */
-/*   Updated: 2019/04/03 14:37:20 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/04 13:35:41 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,7 @@ int				stack_add_first(t_stack **head, int new_value)
 	new_node = create_node(new_value);
 	if (!new_node)
 		return (ERROR_STACK);
-	if (*head)
-		new_node->next = *head;
+	new_node->next = *head;
 	*head = new_node;
 	return (SUCCESS_STACK);
 }
