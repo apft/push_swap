@@ -16,6 +16,12 @@
 #include "output.h"
 #include "ft_printf.h"
 
+static int	free_and_return(void *mem, int ret)
+{
+	free(mem);
+	return (ret);
+}
+
 static int	print_msg_and_return(char *msg, int ret)
 {
 	ft_printf("%s\n", msg);
@@ -51,12 +57,13 @@ int			read_and_apply_instructions(t_data *stacks)
 	while ((status = get_next_line(0, &input, &eol_had_newline)) >= 0)
 	{
 		if (!eol_had_newline)
-			return (0);
+			return (free_and_return((void *)input, 0));
 		apply_fct = get_instruction_fct(input);
 		if (!apply_fct)
-			return (0);
+			return (free_and_return((void *)input, 0));
 		apply_fct(stacks);
-		print_stacks(stacks);
+		//print_stacks(stacks);
+		free((void *)input);
 	}
 	ft_printf("status: %d\n", status);
 	return (work_is_done(stacks));
