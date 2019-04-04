@@ -6,7 +6,7 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 16:11:32 by apion             #+#    #+#             */
-/*   Updated: 2019/04/04 10:42:49 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/04 15:36:46 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,13 @@ int			read_and_apply_instructions(t_data *stacks)
 {
 	char			*input;
 	int				eol_had_newline;
-	int				status;
+	int				len;
 	t_fct_to_apply	apply_fct;
 
-	print_stacks(stacks);
-	while ((status = get_next_line(0, &input, &eol_had_newline)) >= 0)
+	//print_stacks(stacks);
+	while ((len = get_next_line(0, &input, &eol_had_newline)) >= 0)
 	{
-		if (!eol_had_newline)
+		if (len > 3 || len < 2 || !input[len - 1] || !eol_had_newline)
 			return (free_and_return((void *)input, 0));
 		apply_fct = get_instruction_fct(input);
 		if (!apply_fct)
@@ -65,6 +65,6 @@ int			read_and_apply_instructions(t_data *stacks)
 		//print_stacks(stacks);
 		free((void *)input);
 	}
-	ft_printf("status: %d\n", status);
+	ft_printf("status: %d\n", len);
 	return (work_is_done(stacks));
 }
