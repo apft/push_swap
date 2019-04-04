@@ -6,7 +6,7 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 18:08:31 by apion             #+#    #+#             */
-/*   Updated: 2019/04/04 10:39:03 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/04 13:31:12 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,7 @@ struct			s_core
 typedef int		(*t_fct_to_apply)(t_data *);
 
 t_fct_to_apply	get_instruction_fct(char *input);
+
+int		has_duplicate(t_stack *stack);
 
 #endif

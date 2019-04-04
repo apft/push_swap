@@ -6,12 +6,12 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 10:48:25 by apion             #+#    #+#             */
-/*   Updated: 2019/04/04 10:48:21 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/04 13:31:22 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
-#include "stack.h"
+#include "core.h"
 #include "libft.h"
 #include "ft_printf.h"
 
@@ -75,5 +75,7 @@ int			parse_args(int argc, char **argv, t_data *stacks)
 		while (stacks->b)
 			stack_push(&stacks->b, &stacks->a);
 	}
+	if (has_duplicate(stacks->a))
+		return (0);
 	return (1);
 }
