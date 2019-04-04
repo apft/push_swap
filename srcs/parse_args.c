@@ -6,7 +6,7 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 10:48:25 by apion             #+#    #+#             */
-/*   Updated: 2019/04/03 15:20:03 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/04 10:48:21 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 #include "ft_printf.h"
 
 #define INT_LEN_MAX 10
-#define INT_MAX_STR "2147483647"
-#define INT_MIN_STR "-2147483648"
 #ifndef INT_MIN
 # define INT_MIN -2147483648
 #endif
