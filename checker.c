@@ -6,7 +6,7 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 10:33:31 by apion             #+#    #+#             */
-/*   Updated: 2019/04/03 16:31:39 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/04 13:37:17 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int		main(int argc, char **argv)
 	ft_printf("\n");
 	if (!read_and_apply_instructions(&stacks))
 		return (return_error_and_free(&stacks));
-	return (0);
+	return (free_and_return(&stacks, 0));
 }
 
 void end (void)
