@@ -6,7 +6,7 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 15:51:22 by apion             #+#    #+#             */
-/*   Updated: 2019/04/03 16:18:33 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/04 10:37:54 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	print_node(t_stack *node)
 		ft_printf("%*s", WIDTH_COLUMN, " ");
 }
 
-void	print_stacks(t_data *stacks)
+void		print_stacks(t_data *stacks)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;

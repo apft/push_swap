@@ -6,7 +6,7 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 17:59:11 by apion             #+#    #+#             */
-/*   Updated: 2019/04/03 19:13:22 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/04 10:40:58 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 t_fct_to_apply	get_instruction_fct(char *input)
 {
+	int				size;
 	static t_core	instructions[] = {
 		{"sa", &sa},
 		{"sb", &sb},
@@ -29,7 +30,6 @@ t_fct_to_apply	get_instruction_fct(char *input)
 		{"rrb", &rrb},
 		{"rrr", &rrr}
 	};
-	int		size;
 
 	size = sizeof(instructions) / sizeof(t_core);
 	while (size--)

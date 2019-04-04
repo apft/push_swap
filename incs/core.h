@@ -6,7 +6,7 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 18:08:31 by apion             #+#    #+#             */
-/*   Updated: 2019/04/03 19:12:59 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/04 10:39:03 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 # define CORE_H
 
 # include "utils.h"
-
-# define N_INSTRUCTIONS	11
 
 int				pa(t_data *stacks);
 int				pb(t_data *stacks);

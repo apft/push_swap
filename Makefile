@@ -6,7 +6,7 @@
 #    By: apion <apion@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/29 11:28:44 by apion             #+#    #+#              #
-#    Updated: 2019/04/03 19:15:28 by apion            ###   ########.fr        #
+#    Updated: 2019/04/04 10:41:28 by apion            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,7 @@ C_DIR		:= srcs
 H_DIR		:= incs $(LIBFT_PATH) $(FT_PRINTF_PATH)
 O_DIR		:= .obj
 C_FILES		:= \
+	srcs/core/core.c \
 	srcs/core/push.c \
 	srcs/core/reverse_rotate.c \
 	srcs/core/rotate.c \

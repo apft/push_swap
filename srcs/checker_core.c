@@ -6,7 +6,7 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 16:11:32 by apion             #+#    #+#             */
-/*   Updated: 2019/04/03 19:15:11 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/04 10:42:49 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,27 @@
 #include "output.h"
 #include "ft_printf.h"
 
-t_fct_to_apply	get_instruction_fct(char *input)
+static int	print_msg_and_return(char *msg, int ret)
 {
-	static t_core	instructions[] = {
-		{"sa", &sa},
-		{"sb", &sb},
-		{"ss", &ss},
-		{"pa", &pa},
-		{"pb", &pb},
-		{"ra", &ra},
-		{"rb", &rb},
-		{"rr", &rr},
-		{"rra", &rra},
-		{"rrb", &rrb},
-		{"rrr", &rrr}
-	};
-	int		size;
+	ft_printf("%s\n", msg);
+	return (ret);
+}
 
-	size = sizeof(instructions) / sizeof(t_core);
-	while (size--)
-		if (ft_strequ(input, instructions[size].value))
-			return (instructions[size].apply_fct);
+/*
+** Need to check for duplicate before is_sort
+**  - if stack_b is not empty => return `KO'
+**  - if stack_a[i] > stack_a[i+1] => return `KO'
+**  - if stack_a[i] == stack_a[i+1] => return `Error'
+**  - if stack_a not sorted, there might still exists some duplicate values...
+**  	and this information is hidden without a check of all the given args
+*/
+
+static int	work_is_done(t_data *stacks)
+{
+	if (stacks->b)
+		return (print_msg_and_return("KO", 1));
+	else if (stacks->a)
+		return (print_msg_and_return("OK", 1));
 	return (0);
 }
 
@@ -59,5 +59,5 @@ int			read_and_apply_instructions(t_data *stacks)
 		print_stacks(stacks);
 	}
 	ft_printf("status: %d\n", status);
-	return (1);
+	return (work_is_done(stacks));
 }
