@@ -6,7 +6,7 @@
 #    By: apion <apion@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/29 11:28:44 by apion             #+#    #+#              #
-#    Updated: 2019/04/04 13:45:14 by apion            ###   ########.fr        #
+#    Updated: 2019/04/05 13:14:12 by apion            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ LIBFT			:= $(LIBFT_PATH)/libft.a
 FT_PRINTF_PATH	:= ft_printf
 FT_PRINTF		:= $(FT_PRINTF_PATH)/libftprintf.a
 
+
 NAME		:= both
 CHECKER		:= checker
 PUSH_SWAP	:= push_swap
@@ -40,7 +41,7 @@ PUSH_SWAP_O_FILES	= $(PUSH_SWAP_FILES:%.c=%.o)
 PUSH_SWAP_D_FILES	= $(PUSH_SWAP_FILES:%.c=%.d)
 
 C_DIR		:= srcs
-H_DIR		:= incs $(LIBFT_PATH) $(FT_PRINTF_PATH)
+H_DIR		:= incs $(LIBFT_PATH)/incs $(FT_PRINTF_PATH)
 O_DIR		:= .obj
 C_FILES		:= \
 	srcs/core/core.c \
