@@ -16,3 +16,6 @@
 # exec
 checker
 push_swap
+
+# dSYM files
+*.dSYM
