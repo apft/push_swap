@@ -6,7 +6,7 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 16:11:32 by apion             #+#    #+#             */
-/*   Updated: 2019/04/04 15:36:46 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/05 13:12:27 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 #include "get_next_line.h"
 #include "output.h"
 #include "ft_printf.h"
+
+#define VISUAL	1
 
 static int	free_and_return(void *mem, int ret)
 {
@@ -28,22 +30,22 @@ static int	print_msg_and_return(char *msg, int ret)
 	return (ret);
 }
 
-/*
-** Need to check for duplicate before is_sort
-**  - if stack_b is not empty => return `KO'
-**  - if stack_a[i] > stack_a[i+1] => return `KO'
-**  - if stack_a[i] == stack_a[i+1] => return `Error'
-**  - if stack_a not sorted, there might still exists some duplicate values...
-**  	and this information is hidden without a check of all the given args
-*/
+static int	is_sort_stack(t_stack *stack)
+{
+	while (stack && stack->next)
+	{
+		if (stack->value >= stack->next->value)
+			return (0);
+		stack = stack->next;
+	}
+	return (1);
+}
 
 static int	work_is_done(t_data *stacks)
 {
-	if (stacks->b)
-		return (print_msg_and_return("KO", 1));
-	else if (stacks->a)
+	if (!stacks->b && is_sort_stack(stacks->a))
 		return (print_msg_and_return("OK", 1));
-	return (0);
+	return (print_msg_and_return("KO", 1));
 }
 
 int			read_and_apply_instructions(t_data *stacks)
@@ -53,7 +55,8 @@ int			read_and_apply_instructions(t_data *stacks)
 	int				len;
 	t_fct_to_apply	apply_fct;
 
-	//print_stacks(stacks);
+	if (VISUAL)
+		print_stacks(stacks);
 	while ((len = get_next_line(0, &input, &eol_had_newline)) >= 0)
 	{
 		if (len > 3 || len < 2 || !input[len - 1] || !eol_had_newline)
@@ -62,9 +65,9 @@ int			read_and_apply_instructions(t_data *stacks)
 		if (!apply_fct)
 			return (free_and_return((void *)input, 0));
 		apply_fct(stacks);
-		//print_stacks(stacks);
+		if (VISUAL)
+			print_stacks(stacks);
 		free((void *)input);
 	}
-	ft_printf("status: %d\n", len);
 	return (work_is_done(stacks));
 }

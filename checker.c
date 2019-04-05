@@ -6,7 +6,7 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 10:33:31 by apion             #+#    #+#             */
-/*   Updated: 2019/04/04 13:37:17 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/05 13:15:10 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,10 @@ int		main(int argc, char **argv)
 
 	stacks.a = 0;
 	stacks.b = 0;
-	if (argc < 2 || !parse_args(argc, argv, &stacks))
+	if (argc < 2)
+		return (0);
+	if (!parse_args(argc, argv, &stacks))
 		return (return_error_and_free(&stacks));
-	ft_printf("stack a:");
-	stack_print(stacks.a);
-	ft_printf("\n");
 	if (!read_and_apply_instructions(&stacks))
 		return (return_error_and_free(&stacks));
 	return (free_and_return(&stacks, 0));
@@ -48,5 +47,5 @@ int		main(int argc, char **argv)
 
 void end (void)
 {
-	  ft_printf ("\nIn end ()\n");
+	 // ft_printf ("\nIn end ()\n");
 }
