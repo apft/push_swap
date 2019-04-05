@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/03 10:49:58 by apion             #+#    #+#             */
-/*   Updated: 2019/04/05 13:24:01 by apion            ###   ########.fr       */
+/*   Created: 2019/04/05 13:20:46 by apion             #+#    #+#             */
+/*   Updated: 2019/04/05 13:23:13 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#include "utils.h"
+#include "ft_printf.h"
 
-# include "stack.h"
-
-typedef struct s_data	t_data;
-struct	s_data
+int		free_stacks_and_return(t_data *stacks, int ret)
 {
-	t_stack	*a;
-	t_stack	*b;
-};
+	stack_del_all(&stacks->a);
+	stack_del_all(&stacks->b);
+	return (ret);
+}
 
-int			parse_args(int argc, char **argv, t_data *stacks);
-
-int		free_stacks_and_return(t_data *stacks, int ret);
-int		return_error_and_free_stacks(t_data *stacks);
-
-#endif
+int		return_error_and_free_stacks(t_data *stacks)
+{
+	ft_dprintf(2, "Error\n");
+	return (free_stacks_and_return(stacks, -1));
+}
