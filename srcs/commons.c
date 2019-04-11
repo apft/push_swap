@@ -6,12 +6,23 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 13:20:46 by apion             #+#    #+#             */
-/*   Updated: 2019/04/11 13:13:18 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/11 13:27:27 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 #include "ft_printf.h"
+
+int		is_sort_stack(t_stack *stack)
+{
+	while (stack && stack->next)
+	{
+		if (stack->value >= stack->next->value)
+			return (0);
+		stack = stack->next;
+	}
+	return (1);
+}
 
 int		free_stacks_and_return(t_data *stacks, int ret)
 {

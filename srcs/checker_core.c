@@ -6,7 +6,7 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 16:11:32 by apion             #+#    #+#             */
-/*   Updated: 2019/04/05 13:12:27 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/11 13:28:05 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,6 @@ static int	print_msg_and_return(char *msg, int ret)
 {
 	ft_printf("%s\n", msg);
 	return (ret);
-}
-
-static int	is_sort_stack(t_stack *stack)
-{
-	while (stack && stack->next)
-	{
-		if (stack->value >= stack->next->value)
-			return (0);
-		stack = stack->next;
-	}
-	return (1);
 }
 
 static int	work_is_done(t_data *stacks)

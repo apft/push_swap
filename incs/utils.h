@@ -6,7 +6,7 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 10:49:58 by apion             #+#    #+#             */
-/*   Updated: 2019/04/11 13:07:45 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/11 13:27:38 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ struct	s_data
 
 int			parse_args(int argc, char **argv, t_data *stacks);
 
+int		is_sort_stack(t_stack *stack);
 int		free_stacks_and_return(t_data *stacks, int ret);
 int		return_error_and_free_stacks(t_data *stacks);
 
