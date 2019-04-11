@@ -6,7 +6,7 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 13:20:46 by apion             #+#    #+#             */
-/*   Updated: 2019/04/05 13:32:15 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/11 13:13:18 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int		free_stacks_and_return(t_data *stacks, int ret)
 {
 	stack_del_all(&stacks->a);
 	stack_del_all(&stacks->b);
+	action_del_all(&stacks->actions);
 	return (ret);
 }
 

@@ -6,7 +6,7 @@
 #    By: apion <apion@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/29 11:28:44 by apion             #+#    #+#              #
-#    Updated: 2019/04/05 17:30:13 by apion            ###   ########.fr        #
+#    Updated: 2019/04/11 13:11:06 by apion            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,6 +54,7 @@ C_FILES		:= \
 	srcs/get_next_line.c \
 	srcs/has_duplicate.c \
 	srcs/output.c \
+	srcs/stack/actions.c \
 	srcs/stack/stack_add.c \
 	srcs/stack/stack_del.c \
 	srcs/stack/stack_dup.c \

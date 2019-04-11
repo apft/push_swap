@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   actions.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/02 10:33:31 by apion             #+#    #+#             */
-/*   Updated: 2019/04/11 13:08:50 by apion            ###   ########.fr       */
+/*   Created: 2019/04/11 11:58:24 by apion             #+#    #+#             */
+/*   Updated: 2019/04/11 13:03:53 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
-int		push_swap(t_data *stacks);
-int		main(int argc, char **argv)
-{
-	t_data	stacks;
+#ifndef ACTIONS_H
+# define ACTIONS_H
 
-	stacks.a = 0;
-	stacks.b = 0;
-	stacks.actions = 0;
-	if (argc < 2)
-		return (0);
-	if (!parse_args(argc, argv, &stacks))
-		return (return_error_and_free_stacks(&stacks));
-	push_swap(&stacks);
-	return (free_stacks_and_return(&stacks, 0));
-}
+typedef struct s_action	t_action;
+
+struct	s_action
+{
+	char		*value;
+	t_action	*next;
+};
+
+void	action_print(t_action *head);
+
+int		action_add_first(t_action **head, const char *value);
+int		action_del_all(t_action **head);
+void	action_reverse(t_action **head);
+
+#endif
