@@ -6,7 +6,7 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 10:48:25 by apion             #+#    #+#             */
-/*   Updated: 2019/04/04 13:31:22 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/11 12:22:41 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,13 @@ int			parse_args(int argc, char **argv, t_data *stacks)
 	while (--argc)
 	{
 		while (*argc[argv] && (is_valid = parse_args_atoi(&argv[argc], &value)))
-			stack_add_first(&stacks->b, value);
+			if (!stack_add_first(&stacks->b, value))
+				return (0);
 		if (!is_valid)
 			return (0);
 		while (stacks->b)
-			stack_push(&stacks->b, &stacks->a);
+			if (!stack_push(&stacks->b, &stacks->a))
+				return (0);
 	}
 	if (has_duplicate(stacks->a))
 		return (0);
