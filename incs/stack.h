@@ -6,7 +6,7 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 09:44:57 by apion             #+#    #+#             */
-/*   Updated: 2019/04/04 13:24:06 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/11 15:14:23 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,17 @@ int			stack_add_first(t_stack **head, int value);
 int			stack_del_first(t_stack **head);
 int			stack_del_all(t_stack **head);
 
+int			size_stack(t_stack *stack);
+
 t_stack		*stack_dup(t_stack *from);
+void		stack_merge_sort(t_stack **head);
 
 int			stack_push(t_stack **stack_from, t_stack **stack_to);
 int			stack_swap(t_stack *head);
 int			stack_rotate(t_stack **head);
 int			stack_reverse_rotate(t_stack **head);
+
+int			has_duplicate(t_stack *stack);
+int			get_median(t_stack *stack);
 
 #endif

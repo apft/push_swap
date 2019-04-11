@@ -1,32 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   actions.h                                          :+:      :+:    :+:   */
+/*   size.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/11 11:58:24 by apion             #+#    #+#             */
-/*   Updated: 2019/04/11 14:43:10 by apion            ###   ########.fr       */
+/*   Created: 2019/04/11 14:30:25 by apion             #+#    #+#             */
+/*   Updated: 2019/04/11 14:32:53 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ACTIONS_H
-# define ACTIONS_H
+#include "utils.h"
 
-typedef struct s_action	t_action;
-
-struct	s_action
+int		size_stack(t_stack *stack)
 {
-	char		*value;
-	t_action	*next;
-};
+	int		size;
 
-void	action_print(t_action *head);
+	size = 0;
+	while (stack)
+	{
+		++size;
+		stack = stack->next;
+	}
+	return (size);
+}
 
-int		size_action(t_action *action);
+int		size_action(t_action *action)
+{
+	int		size;
 
-int		action_add_first(t_action **head, const char *value);
-int		action_del_all(t_action **head);
-void	action_reverse(t_action **head);
-
-#endif
+	size = 0;
+	while (action)
+	{
+		++size;
+		action = action->next;
+	}
+	return (size);
+}

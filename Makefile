@@ -6,7 +6,7 @@
 #    By: apion <apion@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/29 11:28:44 by apion             #+#    #+#              #
-#    Updated: 2019/04/11 13:11:06 by apion            ###   ########.fr        #
+#    Updated: 2019/04/11 15:12:08 by apion            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,16 +52,18 @@ C_FILES		:= \
 	srcs/commons.c \
 	srcs/parse_args.c \
 	srcs/get_next_line.c \
-	srcs/has_duplicate.c \
 	srcs/output.c \
 	srcs/stack/actions.c \
+	srcs/stack/size.c \
 	srcs/stack/stack_add.c \
 	srcs/stack/stack_del.c \
 	srcs/stack/stack_dup.c \
+	srcs/stack/stack_merge_sort.c \
 	srcs/stack/stack_print.c \
 	srcs/stack/stack_push.c \
 	srcs/stack/stack_rotate.c \
-	srcs/stack/stack_swap.c
+	srcs/stack/stack_swap.c \
+	srcs/stack/stack_utils.c
 O_TREE		= $(shell find $(O_DIR) -type d -print 2> /dev/null | tail -r)
 
 .SECONDEXPANSION:

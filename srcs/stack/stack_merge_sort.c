@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   has_duplicate.c                                    :+:      :+:    :+:   */
+/*   stack_merge_sort.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/04 11:18:02 by apion             #+#    #+#             */
-/*   Updated: 2019/04/04 13:32:57 by apion            ###   ########.fr       */
+/*   Created: 2019/04/11 14:35:22 by apion             #+#    #+#             */
+/*   Updated: 2019/04/11 14:43:34 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stack.h"
-#include "ft_printf.h"
 
 static void		split_stack(t_stack *head, t_stack **left, t_stack **right)
 {
@@ -62,7 +61,7 @@ static t_stack	*sorted_merge(t_stack *left, t_stack *right)
 	return (result);
 }
 
-static void	merge_sort(t_stack **head)
+void			stack_merge_sort(t_stack **head)
 {
 	t_stack	*left;
 	t_stack *right;
@@ -70,27 +69,7 @@ static void	merge_sort(t_stack **head)
 	if (!head || !*head || !(*head)->next)
 		return ;
 	split_stack(*head, &left, &right);
-	merge_sort(&left);
-	merge_sort(&right);
+	stack_merge_sort(&left);
+	stack_merge_sort(&right);
 	*head = sorted_merge(left, right);
-}
-
-int		has_duplicate(t_stack *stack)
-{
-	t_stack *copy_head;
-	t_stack *copy;
-	int		has_duplicate;
-
-	copy_head = stack_dup(stack);
-	merge_sort(&copy_head);
-	copy = copy_head;
-	has_duplicate = 0;
-	while (!has_duplicate && copy && copy->next)
-	{
-		if (copy->value == copy->next->value)
-			has_duplicate = 1;
-		copy = copy->next;
-	}
-	stack_del_all(&copy_head);
-	return (has_duplicate);
 }
