@@ -1,12 +1,17 @@
 #!/bin/sh
 
-[ "$#" -eq 1 ] && lim="$1" || lim=10
+if [ $# -ne 3 ]; then
+	echo "usage: $0 {min} {max} {number of values}"
+	exit
+fi
 
-ARGS=""
-for i in `seq 1 1 $lim`
-do
-	r=$RANDOM
-   	[ $(($RANDOM % 2)) -eq 0 ] && r="-$r"
-   	ARGS="$ARGS $r"
-done
+export ARGS=$(seq ${1} ${2} | shuf -n ${3} | tr '\n' ' ' | sed 's/ $//')
+
+./push_swap $ARGS > out
+./checker $ARGS < out
+
+# number of actions
+wc -l < out | bc
+
+# args
 echo $ARGS
