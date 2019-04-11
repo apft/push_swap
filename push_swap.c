@@ -6,7 +6,7 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 10:33:31 by apion             #+#    #+#             */
-/*   Updated: 2019/04/11 13:08:50 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/11 13:20:28 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,8 @@
 int		push_swap(t_data *stacks);
 int		main(int argc, char **argv)
 {
-	t_data	stacks;
+	static t_data	stacks;
 
-	stacks.a = 0;
-	stacks.b = 0;
-	stacks.actions = 0;
 	if (argc < 2)
 		return (0);
 	if (!parse_args(argc, argv, &stacks))
