@@ -6,7 +6,7 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 15:51:22 by apion             #+#    #+#             */
-/*   Updated: 2019/04/04 10:37:54 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/11 18:03:06 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 static void	print_header(void)
 {
-	ft_printf("%{u}%*s%*s | %*s%*s%{\\u}\n",
+	ft_printf("%y%{u}%*s%*s | %*s%*s%{\\u}\n",
 			WIDTH_COLUMN / 2, "A", WIDTH_COLUMN / 2, "",
 			WIDTH_COLUMN / 2, "B", WIDTH_COLUMN / 2, "");
 }
