@@ -6,15 +6,16 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 18:02:58 by apion             #+#    #+#             */
-/*   Updated: 2019/04/12 17:46:21 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/12 19:59:48 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-int			pa(t_data *stacks)
+int			pa(t_data *stacks, int add_to_actions)
 {
-	action_add_first(&stacks->actions, "pa");
+	if (add_to_actions)
+		action_add_first(&stacks->actions, "pa");
 	if (stack_push(&stacks->b, &stacks->a))
 	{
 		stacks->size_a += 1;
@@ -24,9 +25,10 @@ int			pa(t_data *stacks)
 	return (0);
 }
 
-int			pb(t_data *stacks)
+int			pb(t_data *stacks, int add_to_actions)
 {
-	action_add_first(&stacks->actions, "pb");
+	if (add_to_actions)
+		action_add_first(&stacks->actions, "pb");
 	if (stack_push(&stacks->a, &stacks->b))
 	{
 		stacks->size_a -= 1;
