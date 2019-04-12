@@ -6,7 +6,7 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 11:18:02 by apion             #+#    #+#             */
-/*   Updated: 2019/04/11 15:11:03 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/12 17:42:44 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,26 @@ int		get_median(t_stack *stack)
 	median = copy->value;
 	stack_del_all(&copy_head);
 	return (median);
+}
+
+void	compute_scale_values(t_stack *stack)
+{
+	t_stack	*stack_sort_head;
+	t_stack	*stack_sort;
+	t_stack	*copy;
+	int		index;
+
+	stack_sort_head = stack_dup(stack);
+	stack_merge_sort(&stack_sort_head);
+	stack_sort = stack_sort_head;
+	index = 0;
+	while (stack_sort)
+	{
+		copy = stack;
+		while (copy && copy->value != stack_sort->value)
+			copy = copy->next;
+		copy->index = index++;
+		stack_sort = stack_sort->next;
+	}
+	stack_del_all(&stack_sort_head);
 }
