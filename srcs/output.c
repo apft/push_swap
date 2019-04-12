@@ -6,18 +6,21 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 15:51:22 by apion             #+#    #+#             */
-/*   Updated: 2019/04/11 18:03:06 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/12 18:34:56 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 #include "ft_printf.h"
 
-#define WIDTH_COLUMN	14
+#define WIDTH_NUMBER	7
+#define GROUP_SIZE		6
+#define WIDTH_COLUMN	(GROUP_SIZE * WIDTH_NUMBER)
 
-static void	print_header(void)
+static void	print_header(char *action)
 {
-	ft_printf("%y%{u}%*s%*s | %*s%*s%{\\u}\n",
+	ft_printf("%yStacks state after: %{cyan}%s%{nc}\n", action);
+	ft_printf("%{u}%*s%*s | %*s%*s%{\\u}\n",
 			WIDTH_COLUMN / 2, "A", WIDTH_COLUMN / 2, "",
 			WIDTH_COLUMN / 2, "B", WIDTH_COLUMN / 2, "");
 }
@@ -25,28 +28,38 @@ static void	print_header(void)
 static void	print_node(t_stack *node)
 {
 	if (node)
-		ft_printf("%*d", WIDTH_COLUMN, node->value);
+		ft_printf("%*d", WIDTH_NUMBER, node->value);
 	else
-		ft_printf("%*s", WIDTH_COLUMN, " ");
+		ft_printf("%*s", WIDTH_NUMBER, " ");
 }
 
-void		print_stacks(t_data *stacks)
+static t_stack	*print_group(t_stack *stack)
+{
+	int		group_size;
+
+	group_size = GROUP_SIZE;
+	while (group_size--)
+	{
+		print_node(stack);
+		if (stack)
+			stack = stack->next;
+	}
+	return (stack);
+}
+
+void		print_stacks(t_data *stacks, char *action)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 
 	stack_a = stacks->a;
 	stack_b = stacks->b;
-	print_header();
+	print_header(action);
 	while (stack_a || stack_b)
 	{
-		print_node(stack_a);
-		if (stack_a)
-			stack_a = stack_a->next;
+		stack_a = print_group(stack_a);
 		ft_printf(" | ");
-		print_node(stack_b);
-		if (stack_b)
-			stack_b = stack_b->next;
+		stack_b = print_group(stack_b);
 		ft_printf("\n");
 	}
 }
