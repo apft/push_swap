@@ -6,7 +6,7 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 11:18:02 by apion             #+#    #+#             */
-/*   Updated: 2019/04/12 17:42:44 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/12 17:47:19 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int		has_duplicate(t_stack *stack)
 	return (has_duplicate);
 }
 
-int		get_median(t_stack *stack)
+int		stack_get_median(t_stack *stack)
 {
 	int		middle;
 	int		median;

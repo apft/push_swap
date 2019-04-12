@@ -6,7 +6,7 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 09:44:57 by apion             #+#    #+#             */
-/*   Updated: 2019/04/12 14:58:42 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/12 17:47:44 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int			stack_rotate(t_stack **head);
 int			stack_reverse_rotate(t_stack **head);
 
 int			has_duplicate(t_stack *stack);
-int			get_median(t_stack *stack);
+int			stack_get_median(t_stack *stack);
 void		compute_scale_values(t_stack *stack);
 
 #endif
