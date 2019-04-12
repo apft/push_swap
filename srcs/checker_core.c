@@ -6,7 +6,7 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 16:11:32 by apion             #+#    #+#             */
-/*   Updated: 2019/04/12 18:26:07 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/12 20:06:13 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int			read_and_apply_instructions(t_data *stacks)
 		apply_fct = get_instruction_fct(input);
 		if (!apply_fct)
 			return (free_and_return((void *)input, 0));
-		apply_fct(stacks);
+		apply_fct(stacks, DONT_ADD_ACTION_LIST);
 		if (VISUAL)
 			print_stacks(stacks, input);
 		free((void *)input);

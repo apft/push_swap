@@ -6,7 +6,7 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 18:47:42 by apion             #+#    #+#             */
-/*   Updated: 2019/04/12 19:46:45 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/12 20:07:27 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ void	sort_three_elements(t_data *stacks)
 	if (a < b && b < c)
 		return ;
 	else if (b < c && c < a)
-		ra(stacks);
+		ra(stacks, ADD_ACTION_LIST);
 	else if (c < a && a < b)
-		rra(stacks);
+		rra(stacks, ADD_ACTION_LIST);
 	else
 	{
-		sa(stacks);
+		sa(stacks, ADD_ACTION_LIST);
 		sort_three_elements(stacks);
 	}
 }

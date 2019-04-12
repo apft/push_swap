@@ -6,7 +6,7 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 17:28:11 by apion             #+#    #+#             */
-/*   Updated: 2019/04/12 19:50:25 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/12 20:13:47 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,10 +120,10 @@ int		get_min_index_b(int *array_dst_to_top, int size)
 	return (min);
 }
 
-void	apply_action_n_times(t_data *stacks, int n, int (*fct)(t_data *))
+void	apply_action_n_times(t_data *stacks, int n, int (*fct)(t_data *, int))
 {
 	while (n--)
-		fct(stacks);
+		fct(stacks, ADD_ACTION_LIST);
 }
 
 void	do_actions(t_data *stacks, int dst_b, int dst_a)
@@ -145,14 +145,14 @@ void	do_actions(t_data *stacks, int dst_b, int dst_a)
 		apply_action_n_times(stacks, ft_abs(dst_a), (dst_a < 0 ? &rra : &ra));
 		apply_action_n_times(stacks, ft_abs(dst_b), (dst_b < 0 ? &rrb : &rb));
 	}
-	pa(stacks);
+	pa(stacks, ADD_ACTION_LIST);
 }
 
 void	insert_b(t_data *stacks, int value)
 {
-	pb(stacks);
+	pb(stacks, ADD_ACTION_LIST);
 	if (value < stack_get_median(stacks->b))
-		rb(stacks);
+		rb(stacks, ADD_ACTION_LIST);
 }
 
 void	insert_back_in_a(t_data *stacks)
@@ -206,7 +206,16 @@ int			push_swap(t_data *stacks)
 		while (!is_sort_stack(stacks->a) && count++ < stacks->size_a)
 		{
 			if (stacks->a->value >= median_a)
-				ra(stacks);
+			{
+				if (stacks->actions && ft_strequ(stacks->actions->value, "rb"))
+				{
+					rrb(stacks, DONT_ADD_ACTION_LIST);
+					rr(stacks, DONT_ADD_ACTION_LIST);
+					stacks->actions->value[1] = 'r';
+				}
+				else
+					ra(stacks, ADD_ACTION_LIST);
+			}
 			else
 				insert_b(stacks, stacks->a->value);
 		}
