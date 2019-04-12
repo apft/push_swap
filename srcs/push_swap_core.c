@@ -157,7 +157,6 @@ void	insert_b(t_data *stacks, int value)
 
 void	insert_back_in_a(t_data *stacks)
 {
-	int		rotation_count;
 	int		*array_dst_to_top;
 	int		i;
 	int		min_index_b;
@@ -172,16 +171,6 @@ void	insert_back_in_a(t_data *stacks)
 	min_index_b = get_min_index_b(array_dst_to_top, stacks->size_b);
 	do_actions(stacks, dst_to_top(min_index_b, stacks->size_b), array_dst_to_top[min_index_b]);
 	free(array_dst_to_top);
-	return ;
-	rotation_count = 0;
-	while (stacks->a->value < stacks->b->value)
-	{
-		ra(stacks);
-		++rotation_count;
-	}
-	pa(stacks);
-	while (rotation_count--)
-		rra(stacks);
 }
 
 void		set_node_to_top_a(t_data *stacks, int index)
@@ -222,12 +211,6 @@ int			push_swap(t_data *stacks)
 	}
 	if (stacks->size_a == 3)
 		sort_three_elements(stacks);
-	if (size_stack(stacks->a) == 3 && stacks->b)
-	{
-		pb(stacks);
-		if (!is_sort_stack(stacks->a))
-			ra(stacks);
-	}
 	while (stacks->b)
 		insert_back_in_a(stacks);
 	if (stack_get_index_via_index(stacks->a, 0) != 0)
