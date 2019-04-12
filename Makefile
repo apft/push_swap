@@ -6,7 +6,7 @@
 #    By: apion <apion@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/29 11:28:44 by apion             #+#    #+#              #
-#    Updated: 2019/04/12 18:54:37 by apion            ###   ########.fr        #
+#    Updated: 2019/04/12 20:41:03 by apion            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,6 +52,7 @@ C_FILES		:= \
 	srcs/commons.c \
 	srcs/parse_args.c \
 	srcs/get_next_line.c \
+	srcs/opti.c \
 	srcs/output.c \
 	srcs/sort_3.c \
 	srcs/stack/actions.c \

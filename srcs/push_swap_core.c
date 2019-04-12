@@ -6,14 +6,14 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 17:28:11 by apion             #+#    #+#             */
-/*   Updated: 2019/04/12 20:13:47 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/12 20:45:56 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "core.h"
 #include "libft.h"
+#include "opti.h"
 #include "ft_printf.h"
-void	sort_three_elements(t_data *stacks);
 
 int		dst_to_top(int index, int size)
 {
@@ -153,6 +153,8 @@ void	insert_b(t_data *stacks, int value)
 	pb(stacks, ADD_ACTION_LIST);
 	if (value < stack_get_median(stacks->b))
 		rb(stacks, ADD_ACTION_LIST);
+	else if (stacks->b->next && value < stacks->b->next->value)
+		sb(stacks, ADD_ACTION_LIST);
 }
 
 void	insert_back_in_a(t_data *stacks)
@@ -196,12 +198,10 @@ int			push_swap(t_data *stacks)
 		{
 			if (stacks->a->value >= median_a)
 			{
-				if (stacks->actions && ft_strequ(stacks->actions->value, "rb"))
-				{
-					rrb(stacks, DONT_ADD_ACTION_LIST);
-					rr(stacks, DONT_ADD_ACTION_LIST);
-					stacks->actions->value[1] = 'r';
-				}
+				if (is_last_action(stacks->actions, "rb"))
+					do_opti_merge_rb_ra(stacks, MERGE_FROM_RB);
+				else if (is_last_action(stacks->actions, "sb"))
+					do_opti_merge_sb_sa(stacks, MERGE_FROM_SB);
 				else
 					ra(stacks, ADD_ACTION_LIST);
 			}

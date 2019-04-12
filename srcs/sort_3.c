@@ -6,12 +6,12 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 18:47:42 by apion             #+#    #+#             */
-/*   Updated: 2019/04/12 20:07:27 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/12 20:45:08 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "core.h"
-#include "output.h"
+#include "opti.h"
 
 void	sort_three_elements(t_data *stacks)
 {
@@ -32,7 +32,10 @@ void	sort_three_elements(t_data *stacks)
 		rra(stacks, ADD_ACTION_LIST);
 	else
 	{
-		sa(stacks, ADD_ACTION_LIST);
+		if (is_last_action(stacks->actions, "sb"))
+			do_opti_merge_sb_sa(stacks, MERGE_FROM_SB);
+		else
+			sa(stacks, ADD_ACTION_LIST);
 		sort_three_elements(stacks);
 	}
 }
