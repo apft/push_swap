@@ -6,7 +6,7 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 16:11:32 by apion             #+#    #+#             */
-/*   Updated: 2019/04/11 13:28:05 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/12 18:26:07 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 #include "get_next_line.h"
 #include "output.h"
 #include "ft_printf.h"
-
-#define VISUAL	1
 
 static int	free_and_return(void *mem, int ret)
 {
@@ -44,8 +42,6 @@ int			read_and_apply_instructions(t_data *stacks)
 	int				len;
 	t_fct_to_apply	apply_fct;
 
-	if (VISUAL)
-		print_stacks(stacks);
 	while ((len = get_next_line(0, &input, &eol_had_newline)) >= 0)
 	{
 		if (len > 3 || len < 2 || !input[len - 1] || !eol_had_newline)
@@ -55,7 +51,7 @@ int			read_and_apply_instructions(t_data *stacks)
 			return (free_and_return((void *)input, 0));
 		apply_fct(stacks);
 		if (VISUAL)
-			print_stacks(stacks);
+			print_stacks(stacks, input);
 		free((void *)input);
 	}
 	return (work_is_done(stacks));
