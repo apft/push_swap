@@ -6,7 +6,7 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 10:49:58 by apion             #+#    #+#             */
-/*   Updated: 2019/04/12 17:35:58 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/12 17:45:05 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ struct	s_data
 {
 	t_stack		*a;
 	t_stack		*b;
+	int			size_a;
+	int			size_b;
 	t_action	*actions;
 };
 
