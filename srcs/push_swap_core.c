@@ -6,7 +6,7 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 17:28:11 by apion             #+#    #+#             */
-/*   Updated: 2019/04/13 16:18:09 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/13 16:26:15 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,7 @@ void		set_node_to_top_a(t_data *stacks, int index)
 int			push_swap(t_data *stacks)
 {
 	int		count;
+	int		size_a;
 	int		median_a;
 
 	compute_scale_values(stacks->a);
@@ -143,8 +144,9 @@ int			push_swap(t_data *stacks)
 	while (!is_sort_stack(stacks->a) && stacks->size_a > 3)
 	{
 		count = 0;
+		size_a = size_stack(stacks->a);
 		median_a = stack_get_median(stacks->a);
-		while (!is_sort_stack(stacks->a) && count++ < stacks->size_a)
+		while (!is_sort_stack(stacks->a) && count++ < size_a)
 		{
 			if (stacks->a->value >= median_a)
 			{
