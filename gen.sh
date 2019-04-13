@@ -5,7 +5,7 @@ if [ $# -ne 3 ]; then
 	exit
 fi
 
-export ARGS=$(seq ${1} ${2} | shuf -n ${3} | tr '\n' ' ' | sed 's/ $//')
+export ARGS="$(seq ${1} ${2} | shuf -n ${3} | tr '\n' ' ' | sed 's/ $//')"
 
 ./push_swap $ARGS > out
 ./checker $ARGS < out
