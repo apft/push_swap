@@ -6,35 +6,15 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 17:28:11 by apion             #+#    #+#             */
-/*   Updated: 2019/04/13 13:36:25 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/13 16:18:09 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "core.h"
 #include "libft.h"
+#include "algo.h"
 #include "opti.h"
 #include "ft_printf.h"
-
-int		dst_to_top(int index, int size)
-{
-	if (index <= size / 2)
-		return (index);
-	return (-(size - index));
-}
-
-int		n_actions_to_pa(int index_b, int index_a, t_data *stacks)
-{
-	int		dst_a;
-	int		dst_b;
-
-	dst_a = dst_to_top(index_a, stacks->size_a);
-	dst_b = dst_to_top(index_b, stacks->size_b);
-	if (dst_a == dst_b)
-		return (ft_abs(dst_a));
-	if ((dst_a < 0 && dst_b < 0) || (dst_a > 0 && dst_b > 0))
-		return (ft_max(ft_abs(dst_a), ft_abs(dst_b)));
-	return (ft_abs(dst_a) + ft_abs(dst_b));
-}
 
 int		stack_max(t_stack *stack)
 {
@@ -118,34 +98,6 @@ int		get_min_index_b(int *array_dst_to_top, int size)
 		++i;
 	}
 	return (min);
-}
-
-void	apply_action_n_times(t_data *stacks, int n, int (*fct)(t_data *, int))
-{
-	while (n--)
-		fct(stacks, ADD_ACTION_LIST);
-}
-
-void	do_actions(t_data *stacks, int dst_b, int dst_a)
-{
-	if (dst_a == dst_b)
-		apply_action_n_times(stacks, dst_a, (dst_a < 0 ? &rrr : &rr));
-	else if (dst_a > 0 && dst_b > 0)
-	{
-		apply_action_n_times(stacks, ft_min(dst_a, dst_b), &rr);
-		apply_action_n_times(stacks, ft_abs(dst_a - dst_b), dst_a < dst_b ? &rrb : &rra);
-	}
-	else if (dst_a < 0 && dst_b < 0)
-	{
-		apply_action_n_times(stacks, ft_min(-dst_a, -dst_b), &rrr);
-		apply_action_n_times(stacks, ft_abs(dst_a - dst_b), dst_a < dst_b ? &rra : &rrb);
-	}
-	else
-	{
-		apply_action_n_times(stacks, ft_abs(dst_a), (dst_a < 0 ? &rra : &ra));
-		apply_action_n_times(stacks, ft_abs(dst_b), (dst_b < 0 ? &rrb : &rb));
-	}
-	pa(stacks, ADD_ACTION_LIST);
 }
 
 void	insert_b(t_data *stacks, int value)
