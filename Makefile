@@ -6,7 +6,7 @@
 #    By: apion <apion@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/29 11:28:44 by apion             #+#    #+#              #
-#    Updated: 2019/04/12 20:41:03 by apion            ###   ########.fr        #
+#    Updated: 2019/04/13 13:36:34 by apion            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -95,7 +95,10 @@ $(O_DIR)/%.o: %.c $(O_DIR)/%.d | $$(@D)/.
 	@$(CC) $(CFLAGS) $(CPPFLAGS) $(CINCLUDES) -o $@ -c $<
 
 .PRECIOUS: $(O_DIR)/. $(O_DIR)%/.
-$(O_DIR)/. $(O_DIR)%/.:
+$(O_DIR)/.:
+	@echo "Creating directory $@..."
+	@mkdir -p $@
+$(O_DIR)%/.:
 	@echo "Creating directory $@..."
 	@mkdir -p $@
 
