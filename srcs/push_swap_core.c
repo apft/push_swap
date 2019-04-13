@@ -6,7 +6,7 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 17:28:11 by apion             #+#    #+#             */
-/*   Updated: 2019/04/12 20:45:56 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/13 13:36:25 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,7 +160,6 @@ void	insert_b(t_data *stacks, int value)
 void	insert_back_in_a(t_data *stacks)
 {
 	int		*array_dst_to_top;
-	int		i;
 	int		min_index_b;
 
 	array_dst_to_top = compute_array_dst_to_top(stacks);
@@ -169,7 +168,6 @@ void	insert_back_in_a(t_data *stacks)
 		ft_dprintf(2, "Error, could not create array... (malloc error)\n");
 		return ;
 	}
-	i = 0;
 	min_index_b = get_min_index_b(array_dst_to_top, stacks->size_b);
 	do_actions(stacks, dst_to_top(min_index_b, stacks->size_b), array_dst_to_top[min_index_b]);
 	free(array_dst_to_top);
