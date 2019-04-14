@@ -6,7 +6,7 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 17:28:11 by apion             #+#    #+#             */
-/*   Updated: 2019/04/13 16:26:15 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/13 18:56:04 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,17 +146,10 @@ int			push_swap(t_data *stacks)
 		count = 0;
 		size_a = size_stack(stacks->a);
 		median_a = stack_get_median(stacks->a);
-		while (!is_sort_stack(stacks->a) && count++ < size_a)
+		while (!is_sort_stack(stacks->a) && count++ < size_a && stacks->size_a > 3)
 		{
-			if (stacks->a->value >= median_a)
-			{
-				if (is_last_action(stacks->actions, "rb"))
-					do_opti_merge_rb_ra(stacks, MERGE_FROM_RB);
-				else if (is_last_action(stacks->actions, "sb"))
-					do_opti_merge_sb_sa(stacks, MERGE_FROM_SB);
-				else
-					ra(stacks, ADD_ACTION_LIST);
-			}
+			if (stacks->a->value > median_a)
+				ra(stacks, ADD_ACTION_LIST);
 			else
 				insert_b(stacks, stacks->a->value);
 		}
