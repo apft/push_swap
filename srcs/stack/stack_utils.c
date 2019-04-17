@@ -6,7 +6,7 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 11:18:02 by apion             #+#    #+#             */
-/*   Updated: 2019/04/12 17:47:19 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/17 16:58:02 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int		stack_get_median(t_stack *stack)
 	copy_head = stack_dup(stack);
 	stack_merge_sort(&copy_head);
 	copy = copy_head;
+	//TODO: compute size into merge_sort
 	middle = size_stack(copy_head) / 2;
 	while (middle-- && copy->next)
 		copy = copy->next;

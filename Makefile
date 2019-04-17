@@ -61,6 +61,7 @@ C_FILES		:= \
 	srcs/stack/stack_add.c \
 	srcs/stack/stack_del.c \
 	srcs/stack/stack_dup.c \
+	srcs/stack/stack_min.c \
 	srcs/stack/stack_merge_sort.c \
 	srcs/stack/stack_print.c \
 	srcs/stack/stack_push.c \
