@@ -6,7 +6,7 @@
 #    By: apion <apion@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/29 11:28:44 by apion             #+#    #+#              #
-#    Updated: 2019/04/17 12:57:36 by apion            ###   ########.fr        #
+#    Updated: 2019/04/17 17:14:41 by apion            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,9 +49,7 @@ C_FILES		:= \
 	srcs/core/reverse_rotate.c \
 	srcs/core/rotate.c \
 	srcs/core/swap.c \
-	srcs/algo.c \
 	srcs/commons.c \
-	srcs/do_actions.c \
 	srcs/insertion_sort.c \
 	srcs/parse_args.c \
 	srcs/get_next_line.c \
