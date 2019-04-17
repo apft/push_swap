@@ -6,7 +6,7 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 17:28:11 by apion             #+#    #+#             */
-/*   Updated: 2019/04/17 17:28:27 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/17 17:43:01 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,8 @@ static void	insert_b(t_data *stacks, int value)
 	pb(stacks, ADD_ACTION_LIST);
 	if (value < stack_get_median(stacks->b))
 		rb(stacks, ADD_ACTION_LIST);
-//	else if (stacks->b->next && (index + 1) == stacks->b->next->index)
-//		sb(stacks, ADD_ACTION_LIST);
 }
 
-#include "ft_printf.h"
 static void	pb_all_smaller_median(t_data *stacks)
 {
 	int		size_a;
@@ -56,7 +53,6 @@ static void	pb_all_smaller_median(t_data *stacks)
 	}
 }
 
-#include "output.h"
 int			push_swap(t_data *stacks)
 {
 	stacks->size_a = size_stack(stacks->a);

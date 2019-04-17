@@ -6,7 +6,7 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 16:10:14 by apion             #+#    #+#             */
-/*   Updated: 2019/04/17 16:30:49 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/17 17:38:12 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "utils.h"
 
-# define VISUAL	1
+# define VISUAL	0
 
 void	print_stacks(t_data *stacks, char *action);
 

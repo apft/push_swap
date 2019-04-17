@@ -6,12 +6,12 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/17 17:09:36 by apion             #+#    #+#             */
-/*   Updated: 2019/04/17 17:18:52 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/17 17:35:54 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INSERTION_SORT
-# define INSERTION_SORT
+#ifndef INSERTION_SORT_H
+# define INSERTION_SORT_H
 
 # include "utils.h"
 

@@ -6,7 +6,7 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 15:51:22 by apion             #+#    #+#             */
-/*   Updated: 2019/04/17 16:30:59 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/17 17:37:06 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #define GROUP_SIZE		6
 #define WIDTH_COLUMN	(GROUP_SIZE * WIDTH_NUMBER)
 
-static void	print_header(char *action)
+static void		print_header(char *action)
 {
 	if (CLEAR_SCREEN)
 		ft_printf("%y");
@@ -29,7 +29,7 @@ static void	print_header(char *action)
 			WIDTH_COLUMN / 2, "B", WIDTH_COLUMN / 2, "");
 }
 
-static void	print_node(t_stack *node)
+static void		print_node(t_stack *node)
 {
 	if (node)
 		ft_printf("%*d", WIDTH_NUMBER, node->value);
@@ -51,7 +51,7 @@ static t_stack	*print_group(t_stack *stack)
 	return (stack);
 }
 
-void		print_stacks(t_data *stacks, char *action)
+void			print_stacks(t_data *stacks, char *action)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
