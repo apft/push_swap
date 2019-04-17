@@ -6,31 +6,20 @@
 /*   By: apion <pion@student.42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/17 12:16:20 by apion             #+#    #+#             */
-/*   Updated: 2019/04/17 16:30:19 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/17 17:26:47 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
 #include "core.h"
+#include "insertion_sort.h"
 #include "libft.h"
-#include "ft_printf.h"
-#include "output.h"
 
 #ifndef INT_MAX
 # define INT_MAX	0x7fffffff
 #endif
 
-#define IS_STACK_A	1
-#define IS_STACK_B	2
-
-static int	dst_to_top(int index, int size)
-{
-	if (index <= size / 2)
-		return (index);
-	return (-(size - index));
-}
-
-static int	get_nbr_action(t_data *stacks, int index_next_a, int index_current_b)
+static int	get_nbr_action(t_data *stacks, int index_next_a,
+							int index_current_b)
 {
 	int		dst_a;
 	int		dst_b;
@@ -89,28 +78,6 @@ static void	search_best_b(t_data *stacks, int *next_a, int *best_b)
 		}
 		++index;
 		stack_b = stack_b->next;
-	}
-}
-
-static void	apply_rotation(t_data *stacks, int *dst_to_top, int which_stack)
-{
-	if (!*dst_to_top)
-		return ;
-	else if (*dst_to_top < 0)
-	{
-		if (which_stack == IS_STACK_A)
-			rra(stacks, ADD_ACTION_LIST);
-		else if (which_stack == IS_STACK_B)
-			rrb(stacks, ADD_ACTION_LIST);
-		++(*dst_to_top);
-	}
-	else
-	{
-		if (which_stack == IS_STACK_A)
-			ra(stacks, ADD_ACTION_LIST);
-		else if (which_stack == IS_STACK_B)
-			rb(stacks, ADD_ACTION_LIST);
-		--(*dst_to_top);
 	}
 }
 

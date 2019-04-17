@@ -50,6 +50,7 @@ C_FILES		:= \
 	srcs/core/rotate.c \
 	srcs/core/swap.c \
 	srcs/commons.c \
+	srcs/dst_and_rotation.c \
 	srcs/insertion_sort.c \
 	srcs/parse_args.c \
 	srcs/get_next_line.c \
