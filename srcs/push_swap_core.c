@@ -6,7 +6,7 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 17:28:11 by apion             #+#    #+#             */
-/*   Updated: 2019/04/13 18:56:04 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/17 12:57:12 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,24 +105,8 @@ void	insert_b(t_data *stacks, int value)
 	pb(stacks, ADD_ACTION_LIST);
 	if (value < stack_get_median(stacks->b))
 		rb(stacks, ADD_ACTION_LIST);
-	else if (stacks->b->next && value < stacks->b->next->value)
-		sb(stacks, ADD_ACTION_LIST);
-}
-
-void	insert_back_in_a(t_data *stacks)
-{
-	int		*array_dst_to_top;
-	int		min_index_b;
-
-	array_dst_to_top = compute_array_dst_to_top(stacks);
-	if (!array_dst_to_top)
-	{
-		ft_dprintf(2, "Error, could not create array... (malloc error)\n");
-		return ;
-	}
-	min_index_b = get_min_index_b(array_dst_to_top, stacks->size_b);
-	do_actions(stacks, dst_to_top(min_index_b, stacks->size_b), array_dst_to_top[min_index_b]);
-	free(array_dst_to_top);
+//	else if (stacks->b->next && (index + 1) == stacks->b->next->index)
+//		sb(stacks, ADD_ACTION_LIST);
 }
 
 void		set_node_to_top_a(t_data *stacks, int index)
@@ -133,31 +117,33 @@ void		set_node_to_top_a(t_data *stacks, int index)
 	apply_action_n_times(stacks, ft_abs(dst), (dst < 0 ? rra : ra));
 }
 
-int			push_swap(t_data *stacks)
+void	pb_all_smaller_median(t_data *stacks)
 {
-	int		count;
 	int		size_a;
 	int		median_a;
 
+	size_a = size_stack(stacks->a);
+	median_a = stack_get_median(stacks->a);
+	while (stacks->size_a > 3 && size_a-- && !is_sort_stack(stacks->a))
+	{
+		if (stacks->a->value >= median_a)
+			ra(stacks, ADD_ACTION_LIST);
+		else
+			insert_b(stacks, stacks->a->value);
+	}
+}
+
+void	insertion_sort(t_data *stacks);
+int			push_swap(t_data *stacks)
+{
 	compute_scale_values(stacks->a);
 	stacks->size_a = size_stack(stacks->a);
 	while (!is_sort_stack(stacks->a) && stacks->size_a > 3)
-	{
-		count = 0;
-		size_a = size_stack(stacks->a);
-		median_a = stack_get_median(stacks->a);
-		while (!is_sort_stack(stacks->a) && count++ < size_a && stacks->size_a > 3)
-		{
-			if (stacks->a->value > median_a)
-				ra(stacks, ADD_ACTION_LIST);
-			else
-				insert_b(stacks, stacks->a->value);
-		}
-	}
+		pb_all_smaller_median(stacks);
 	if (stacks->size_a == 3)
 		sort_three_elements(stacks);
-	while (stacks->b)
-		insert_back_in_a(stacks);
+	if (stacks->b)
+		insertion_sort(stacks);
 	if (stack_get_index_via_index(stacks->a, 0) != 0)
 		set_node_to_top_a(stacks, 0);
 	action_print(stacks->actions);
