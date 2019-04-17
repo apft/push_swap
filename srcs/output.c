@@ -6,12 +6,14 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 15:51:22 by apion             #+#    #+#             */
-/*   Updated: 2019/04/12 18:34:56 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/17 16:30:59 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 #include "ft_printf.h"
+
+#define CLEAR_SCREEN	1
 
 #define WIDTH_NUMBER	7
 #define GROUP_SIZE		6
@@ -19,7 +21,9 @@
 
 static void	print_header(char *action)
 {
-	ft_printf("%yStacks state after: %{cyan}%s%{nc}\n", action);
+	if (CLEAR_SCREEN)
+		ft_printf("%y");
+	ft_printf("Stacks state after: %{cyan}%s%{nc}\n", action);
 	ft_printf("%{u}%*s%*s | %*s%*s%{\\u}\n",
 			WIDTH_COLUMN / 2, "A", WIDTH_COLUMN / 2, "",
 			WIDTH_COLUMN / 2, "B", WIDTH_COLUMN / 2, "");
