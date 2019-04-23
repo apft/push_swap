@@ -6,7 +6,7 @@
 #    By: apion <apion@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/29 11:28:44 by apion             #+#    #+#              #
-#    Updated: 2019/04/17 17:14:41 by apion            ###   ########.fr        #
+#    Updated: 2019/04/23 19:14:48 by apion            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,10 +33,10 @@ NAME		:= both
 CHECKER		:= checker
 PUSH_SWAP	:= push_swap
 
-CHECKER_FILES		= checker.c srcs/checker_core.c $(C_FILES)
+CHECKER_FILES		= srcs/checker.c srcs/checker_core.c $(C_FILES)
 CHECKER_O_FILES		= $(CHECKER_FILES:%.c=%.o)
 CHECKER_D_FILES		= $(CHECKER_FILES:%.c=%.d)
-PUSH_SWAP_FILES		= push_swap.c srcs/push_swap_core.c $(C_FILES)
+PUSH_SWAP_FILES		= srcs/push_swap.c srcs/push_swap_core.c $(C_FILES)
 PUSH_SWAP_O_FILES	= $(PUSH_SWAP_FILES:%.c=%.o)
 PUSH_SWAP_D_FILES	= $(PUSH_SWAP_FILES:%.c=%.d)
 
