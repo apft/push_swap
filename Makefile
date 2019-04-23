@@ -6,7 +6,7 @@
 #    By: apion <apion@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/29 11:28:44 by apion             #+#    #+#              #
-#    Updated: 2019/04/23 19:29:22 by apion            ###   ########.fr        #
+#    Updated: 2019/04/23 19:56:44 by apion            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,6 +66,7 @@ C_FILES		:= \
 	srcs/stack/stack_merge_sort.c \
 	srcs/stack/stack_print.c \
 	srcs/stack/stack_push.c \
+	srcs/stack/stack_reverse.c \
 	srcs/stack/stack_rotate.c \
 	srcs/stack/stack_swap.c \
 	srcs/stack/stack_utils.c

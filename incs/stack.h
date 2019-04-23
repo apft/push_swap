@@ -6,7 +6,7 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 09:44:57 by apion             #+#    #+#             */
-/*   Updated: 2019/04/17 17:14:23 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/23 19:57:24 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int			stack_del_all(t_stack **head);
 int			size_stack(t_stack *stack);
 int			stack_min(t_stack *stack, int *index_min);
 
+void		stack_reverse(t_stack **head);
 t_stack		*stack_dup(t_stack *from);
 void		stack_merge_sort(t_stack **head);
 
