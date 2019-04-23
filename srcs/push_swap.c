@@ -6,7 +6,7 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 10:33:31 by apion             #+#    #+#             */
-/*   Updated: 2019/04/23 20:09:41 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/23 20:43:19 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		main(int argc, char **argv)
 
 	if (argc < 2)
 		return (0);
-	if (!parse_args(argc, argv, &env))
+	if (!parse_args(argc, argv, &env, PUSH_SWAP))
 		return (return_error_and_free_env(&env));
 	push_swap(&env);
 	return (free_env_and_return(&env, 0));

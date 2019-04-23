@@ -6,7 +6,7 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 16:11:32 by apion             #+#    #+#             */
-/*   Updated: 2019/04/23 20:12:03 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/23 20:34:39 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int			read_and_apply_instructions(t_env *env)
 		if (!apply_fct)
 			return (free_and_return((void *)input, 0));
 		apply_fct(env, DONT_ADD_ACTION_LIST);
-		if (VISUAL)
+		if (env->options & VERBOSE)
 			print_env(env, input);
 		free((void *)input);
 	}

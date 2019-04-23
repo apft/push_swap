@@ -6,7 +6,7 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 10:48:25 by apion             #+#    #+#             */
-/*   Updated: 2019/04/23 20:10:51 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/23 20:51:06 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,20 +65,35 @@ static int	parse_args_atoi(char **str, int *n)
 	return (1);
 }
 
-int			parse_args(int argc, char **argv, t_env *env)
+static int	parse_options(int argc, char *argv, t_env *env)
+{
+	if (argv[0] == '-' && argv[1] == 'v')
+	{
+		if (argc == 2)
+			return (0);
+		env->options |= VERBOSE;
+		return (1);
+	}
+	return (0);
+}
+
+int			parse_args(int argc, char **argv, t_env *env, int from)
 {
 	int		i;
 	int		value;
 	int		is_valid;
 
-	i = 0;
-	while (++i < argc)
+	i = 1;
+	if (from == CHECKER)
+		i += parse_options(argc, argv[i], env);
+	while (i < argc)
 	{
 		while (*argv[i] && (is_valid = parse_args_atoi(&argv[i], &value)))
 			if (!stack_add_first(&env->stack_a, value))
 				return (0);
 		if (!is_valid)
 			return (0);
+		++i;
 	}
 	if (has_duplicate(env->stack_a))
 		return (0);
