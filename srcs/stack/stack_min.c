@@ -6,7 +6,7 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/17 16:49:31 by apion             #+#    #+#             */
-/*   Updated: 2019/04/17 16:59:16 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/23 12:08:31 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int		stack_min(t_stack *stack, int *index_min)
 
 	if (!stack)
 		return (INT_MIN);
+	min = stack->value;
 	index = 0;
 	while (stack)
 	{

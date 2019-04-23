@@ -6,7 +6,7 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 17:28:11 by apion             #+#    #+#             */
-/*   Updated: 2019/04/17 17:43:01 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/23 12:01:42 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static void	set_node_to_top_a(t_data *stacks)
 	int		index_min_a;
 	int		dst_top;
 
+	index_min_a = 0;
 	min_a = stack_min(stacks->a, &index_min_a);
 	dst_top = dst_to_top(index_min_a, stacks->size_a);
 	while (stacks->a->value != min_a)
