@@ -7,8 +7,8 @@ fi
 
 export ARGS="$(seq ${1} ${2} | shuf -n ${3} | tr '\n' ' ' | sed 's/ $//')"
 
-./push_swap $ARGS > out
-./checker $ARGS < out
+./../push_swap $ARGS > out
+./../checker $ARGS < out
 
 # number of actions
 wc -l < out | bc
