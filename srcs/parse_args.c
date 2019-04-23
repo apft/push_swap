@@ -20,10 +20,14 @@
 # define INT_MIN -2147483648
 #endif
 
-static void	jump_spaces(char **str)
+static int	jump_spaces(char **str)
 {
-	while (ft_isspace(**str))
+	int		has_jumped;
+
+	has_jumped = 0;
+	while (ft_isspace(**str) && (has_jumped = 1))
 		++(*str);
+	return (has_jumped);
 }
 
 static int	is_valid_str(char *str)
@@ -54,8 +58,8 @@ static int	parse_args_atoi(char **str, int *n)
 		if ((*n < 0 && *n != INT_MIN) || (sign > 0 && *n == INT_MIN))
 			return (0);
 	}
-	jump_spaces(str);
-	if (**str && !ft_isspace(**str))
+	if ((**str && !ft_isspace(**str))
+			|| (jump_spaces(str) && **str && !is_valid_str(*str)))
 		return (0);
 	*n *= sign;
 	return (1);
