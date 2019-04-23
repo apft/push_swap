@@ -6,7 +6,7 @@
 #    By: apion <apion@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/29 11:28:44 by apion             #+#    #+#              #
-#    Updated: 2019/04/23 19:14:48 by apion            ###   ########.fr        #
+#    Updated: 2019/04/23 19:29:22 by apion            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -124,10 +124,12 @@ clean:
 
 .PHONY: fclean
 fclean: clean
-	@echo "Removing file $(NAME)..."
-	@-$(RM) $(NAME) 2> /dev/null
-	@[ -f $(NAME) ] \
-		&& echo "Could not remove $(NAME) file." \
+	@echo "Removing file $(CHECKER)..."
+	@-$(RM) $(CHECKER) 2> /dev/null
+	@echo "Removing file $(PUSH_SWAP)..."
+	@-$(RM) $(PUSH_SWAP) 2> /dev/null
+	@[ -f $(CHECKER) -o -f $(PUSH_SWAP) ] \
+		&& echo "Could not remove $(CHECKER) and/or $(PUSH_SWAP) file." \
 		|| echo "Successfully clean."
 
 .PHONY: re
