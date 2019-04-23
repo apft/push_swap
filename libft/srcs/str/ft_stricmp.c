@@ -6,7 +6,7 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 15:43:53 by apion             #+#    #+#             */
-/*   Updated: 2018/11/24 18:01:48 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/23 20:59:22 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static int	is_alph_equ(char c1, char c2)
 {
-	return ((ft_islowc(c1) && ft_toupper(c1) == c2) ||
-				(ft_isuppc(c1) && ft_tolower(c1) == c2));
+	return ((ft_islowc(c1) && ft_toupper(c1) == c2)
+				|| (ft_isuppc(c1) && ft_tolower(c1) == c2));
 }
 
 int			ft_stricmp(char const *s1, char const *s2)
@@ -37,6 +37,6 @@ int			ft_stricmp(char const *s1, char const *s2)
 		else
 			i++;
 	}
-	return (*(s1 + i) == *(s2 + i) ||
-			is_alph_equ(*(s1 + i), *(s2 + i)) ? 1 : 0);
+	return (*(s1 + i) == *(s2 + i)
+			|| is_alph_equ(*(s1 + i), *(s2 + i)) ? 1 : 0);
 }
