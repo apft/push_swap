@@ -6,7 +6,7 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 17:38:06 by apion             #+#    #+#             */
-/*   Updated: 2018/11/23 13:41:05 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/23 19:22:31 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ char	*ft_strnstr(const char *str, const char *needle, size_t len)
 	while (i < len && *(str + i))
 	{
 		j = 0;
-		while (i + j < len && *(str + i + j) && *(needle + j) &&
-				*(str + i + j) == *(needle + j))
+		while (i + j < len && *(str + i + j) && *(needle + j)
+				&& *(str + i + j) == *(needle + j))
 			j++;
 		if (!*(needle + j))
 			return ((char *)(str + i));
