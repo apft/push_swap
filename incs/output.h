@@ -6,7 +6,7 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 16:10:14 by apion             #+#    #+#             */
-/*   Updated: 2019/04/17 17:38:12 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/23 20:12:14 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,6 @@
 
 # define VISUAL	0
 
-void	print_stacks(t_data *stacks, char *action);
+void	print_env(t_env *env, char *action);
 
 #endif

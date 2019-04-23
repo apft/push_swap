@@ -6,7 +6,7 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 16:11:32 by apion             #+#    #+#             */
-/*   Updated: 2019/04/12 20:06:13 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/23 20:12:03 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,14 @@ static int	print_msg_and_return(char *msg, int ret)
 	return (ret);
 }
 
-static int	work_is_done(t_data *stacks)
+static int	work_is_done(t_env *env)
 {
-	if (!stacks->b && is_sort_stack(stacks->a))
+	if (!env->stack_b && is_sort_stack(env->stack_a))
 		return (print_msg_and_return("OK", 1));
 	return (print_msg_and_return("KO", 1));
 }
 
-int			read_and_apply_instructions(t_data *stacks)
+int			read_and_apply_instructions(t_env *env)
 {
 	char			*input;
 	int				eol_had_newline;
@@ -49,10 +49,10 @@ int			read_and_apply_instructions(t_data *stacks)
 		apply_fct = get_instruction_fct(input);
 		if (!apply_fct)
 			return (free_and_return((void *)input, 0));
-		apply_fct(stacks, DONT_ADD_ACTION_LIST);
+		apply_fct(env, DONT_ADD_ACTION_LIST);
 		if (VISUAL)
-			print_stacks(stacks, input);
+			print_env(env, input);
 		free((void *)input);
 	}
-	return (work_is_done(stacks));
+	return (work_is_done(env));
 }

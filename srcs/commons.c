@@ -6,7 +6,7 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 13:20:46 by apion             #+#    #+#             */
-/*   Updated: 2019/04/11 13:27:27 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/23 20:08:53 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,16 @@ int		is_sort_stack(t_stack *stack)
 	return (1);
 }
 
-int		free_stacks_and_return(t_data *stacks, int ret)
+int		free_env_and_return(t_env *env, int ret)
 {
-	stack_del_all(&stacks->a);
-	stack_del_all(&stacks->b);
-	action_del_all(&stacks->actions);
+	stack_del_all(&env->stack_a);
+	stack_del_all(&env->stack_b);
+	action_del_all(&env->actions);
 	return (ret);
 }
 
-int		return_error_and_free_stacks(t_data *stacks)
+int		return_error_and_free_env(t_env *env)
 {
 	ft_dprintf(2, "Error\n");
-	return (free_stacks_and_return(stacks, -1));
+	return (free_env_and_return(env, -1));
 }

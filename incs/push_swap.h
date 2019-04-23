@@ -6,13 +6,13 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 19:13:21 by apion             #+#    #+#             */
-/*   Updated: 2019/04/23 19:13:44 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/23 20:07:04 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-int		push_swap(t_data *stacks);
+int		push_swap(t_env *env);
 
 #endif

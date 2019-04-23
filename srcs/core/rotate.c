@@ -6,34 +6,34 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 18:05:39 by apion             #+#    #+#             */
-/*   Updated: 2019/04/13 18:40:57 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/23 20:16:24 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 #include "opti.h"
 
-int		ra(t_data *stacks, int add_to_actions)
+int		ra(t_env *env, int add_to_actions)
 {
-	if (is_last_action(stacks->actions, "rb"))
-		return (do_opti_merge_rb_ra(stacks, MERGE_FROM_RB));
+	if (is_last_action(env->actions, "rb"))
+		return (do_opti_merge_rb_ra(env, MERGE_FROM_RB));
 	if (add_to_actions)
-		action_add_first(&stacks->actions, "ra");
-	return (stack_rotate(&stacks->a));
+		action_add_first(&env->actions, "ra");
+	return (stack_rotate(&env->stack_a));
 }
 
-int		rb(t_data *stacks, int add_to_actions)
+int		rb(t_env *env, int add_to_actions)
 {
-	if (is_last_action(stacks->actions, "ra"))
-		return (do_opti_merge_rb_ra(stacks, MERGE_FROM_RA));
+	if (is_last_action(env->actions, "ra"))
+		return (do_opti_merge_rb_ra(env, MERGE_FROM_RA));
 	if (add_to_actions)
-		action_add_first(&stacks->actions, "rb");
-	return (stack_rotate(&stacks->b));
+		action_add_first(&env->actions, "rb");
+	return (stack_rotate(&env->stack_b));
 }
 
-int		rr(t_data *stacks, int add_to_actions)
+int		rr(t_env *env, int add_to_actions)
 {
 	if (add_to_actions)
-		action_add_first(&stacks->actions, "rr");
-	return (stack_rotate(&stacks->a) + stack_rotate(&stacks->b));
+		action_add_first(&env->actions, "rr");
+	return (stack_rotate(&env->stack_a) + stack_rotate(&env->stack_b));
 }

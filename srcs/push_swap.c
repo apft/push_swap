@@ -6,7 +6,7 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 10:33:31 by apion             #+#    #+#             */
-/*   Updated: 2019/04/23 19:14:51 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/23 20:09:41 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 
 int		main(int argc, char **argv)
 {
-	static t_data	stacks;
+	static t_env	env;
 
 	if (argc < 2)
 		return (0);
-	if (!parse_args(argc, argv, &stacks))
-		return (return_error_and_free_stacks(&stacks));
-	push_swap(&stacks);
-	return (free_stacks_and_return(&stacks, 0));
+	if (!parse_args(argc, argv, &env))
+		return (return_error_and_free_env(&env));
+	push_swap(&env);
+	return (free_env_and_return(&env, 0));
 }

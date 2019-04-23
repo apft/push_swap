@@ -6,7 +6,7 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 15:51:22 by apion             #+#    #+#             */
-/*   Updated: 2019/04/17 17:37:06 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/23 20:13:05 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,13 @@ static t_stack	*print_group(t_stack *stack)
 	return (stack);
 }
 
-void			print_stacks(t_data *stacks, char *action)
+void			print_env(t_env *env, char *action)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 
-	stack_a = stacks->a;
-	stack_b = stacks->b;
+	stack_a = env->stack_a;
+	stack_b = env->stack_b;
 	print_header(action);
 	while (stack_a || stack_b)
 	{

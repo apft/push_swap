@@ -6,13 +6,13 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 16:31:13 by apion             #+#    #+#             */
-/*   Updated: 2019/04/03 16:31:35 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/23 20:06:39 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHECKER_H
 # define CHECKER_H
 
-int			read_and_apply_instructions(t_data *stacks);
+int			read_and_apply_instructions(t_env *env);
 
 #endif

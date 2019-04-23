@@ -6,7 +6,7 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:31:10 by apion             #+#    #+#             */
-/*   Updated: 2019/04/14 13:07:26 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/23 20:05:56 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@
 # define MERGE_FROM_RRA	0
 
 int		is_last_action(t_action *actions, char *action);
-int		do_opti_merge_sb_sa(t_data *stacks, int from_sb);
-int		do_opti_merge_rb_ra(t_data *stacks, int from_rb);
-int		do_opti_merge_rrb_rra(t_data *stacks, int from_rrb);
+int		do_opti_merge_sb_sa(t_env *env, int from_sb);
+int		do_opti_merge_rb_ra(t_env *env, int from_rb);
+int		do_opti_merge_rrb_rra(t_env *env, int from_rrb);
 
-void	sort_three_elements(t_data *stacks);
+void	sort_three_elements(t_env *env);
 
 #endif

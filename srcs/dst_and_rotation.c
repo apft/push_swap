@@ -6,7 +6,7 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/17 16:45:02 by apion             #+#    #+#             */
-/*   Updated: 2019/04/17 17:19:43 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/23 20:19:06 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,24 +20,24 @@ int		dst_to_top(int index, int size)
 	return (-(size - index));
 }
 
-void	apply_rotation(t_data *stacks, int *dst_to_top, int which_stack)
+void	apply_rotation(t_env *env, int *dst_to_top, int which_stack)
 {
 	if (!*dst_to_top)
 		return ;
 	else if (*dst_to_top < 0)
 	{
 		if (which_stack == IS_STACK_A)
-			rra(stacks, ADD_ACTION_LIST);
+			rra(env, ADD_ACTION_LIST);
 		else if (which_stack == IS_STACK_B)
-			rrb(stacks, ADD_ACTION_LIST);
+			rrb(env, ADD_ACTION_LIST);
 		++(*dst_to_top);
 	}
 	else
 	{
 		if (which_stack == IS_STACK_A)
-			ra(stacks, ADD_ACTION_LIST);
+			ra(env, ADD_ACTION_LIST);
 		else if (which_stack == IS_STACK_B)
-			rb(stacks, ADD_ACTION_LIST);
+			rb(env, ADD_ACTION_LIST);
 		--(*dst_to_top);
 	}
 }
