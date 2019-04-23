@@ -6,7 +6,7 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 10:48:25 by apion             #+#    #+#             */
-/*   Updated: 2019/04/11 12:22:41 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/23 13:26:22 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static int	parse_args_atoi(char **str, int *n)
 			return (0);
 	}
 	jump_spaces(str);
-	if (**str && !is_valid_str(*str))
+	if (**str && !ft_isspace(**str))
 		return (0);
 	*n *= sign;
 	return (1);
