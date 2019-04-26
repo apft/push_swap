@@ -6,7 +6,7 @@
 /*   By: apion <apion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 10:48:25 by apion             #+#    #+#             */
-/*   Updated: 2019/04/23 20:51:06 by apion            ###   ########.fr       */
+/*   Updated: 2019/04/24 16:30:28 by apion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static int	parse_args_atoi(char **str, int *n)
 		return (0);
 	if (**str == '+' || **str == '-')
 		sign = *((*str)++) == '-' ? -1 : 1;
-	if (!**str || (**str && !is_valid_str(*str)))
+	if (!**str || (**str && !ft_isdigit(**str)))
 		return (0);
 	while (ft_isdigit(**str))
 	{
